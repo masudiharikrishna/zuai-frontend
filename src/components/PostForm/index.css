@@ -1,0 +1,29 @@
+.new-post-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+}
+.new-post-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50vw;
+}
+.input-container{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.input-container label{
+    font-weight: 700;
+    font-size: 15px;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    height: 60px;
+}
