@@ -14,15 +14,6 @@ const UpdatePost = () => {
   });
   const [submitLoading, setSubmitLoading] = useState(false);
 
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPost((prevPost) => ({
-      ...prevPost,
-      [name]: value
-    }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitLoading(true);
@@ -42,10 +33,11 @@ const UpdatePost = () => {
         throw new Error("Error updating post");
       }
     } catch (err) {
+      alert("Error updating post. Please try again later.");
+    } finally {
       setSubmitLoading(false);
     }
   };
-
 
   return (
     <div className="new-post-form-container">
@@ -59,7 +51,7 @@ const UpdatePost = () => {
             name="title"
             placeholder="Enter the Title"
             className="form-control"
-            onChange={(e) => setPost({title:e.target.value})}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
             value={post.title}
             required
           />
@@ -72,7 +64,7 @@ const UpdatePost = () => {
             name="image"
             placeholder="Enter the Image URL"
             className="form-control"
-            onChange={handleChange}
+            onChange={(e) => setPost({ ...post, image: e.target.value })}
             value={post.image}
             required
           />
@@ -84,7 +76,7 @@ const UpdatePost = () => {
             name="extract"
             placeholder="Enter the extract of content"
             className="form-control"
-            onChange={handleChange}
+            onChange={(e) => setPost({ ...post, extract: e.target.value })}
             value={post.extract}
             required
             rows={3}
@@ -97,7 +89,7 @@ const UpdatePost = () => {
             name="content"
             placeholder="Enter content of post"
             className="form-control"
-            onChange={handleChange}
+            onChange={(e) => setPost({ ...post, content: e.target.value })}
             value={post.content}
             required
             rows={6}
